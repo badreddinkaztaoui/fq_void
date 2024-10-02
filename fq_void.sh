@@ -5,3 +5,6 @@
 ./setup_suckless_tools.sh
 ./setup_desktop.sh
 ./setup_vim.sh
+
+# Reboot the system
+doas reboot
