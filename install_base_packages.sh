@@ -63,7 +63,6 @@ dependencies=(
     xorg
     setxkbmap
     sxhkd
-    libXrandr-devel
     xinit
     vim
     nerd-fonts-ttf
@@ -71,6 +70,18 @@ dependencies=(
     nginx
     netcat
 )
+
+# Configure nginx and docker
+echo -e $YELLOW"Configuring docker ..."$ENDC
+doas ln -s /etc/sv/docker /var/service/
+doas sv start docker
+doas usermod -aG docker $USER
+
+echo -e $YELLOW"Configuring nginx ..."$ENDC
+doas ln -s /etc/sv/nginx /var/service/
+doas sv start nginx
+
+echo -e $GREEN"docker nginx setup completed."$ENDC
 
 for dep in "${dependencies[@]}"; do
   install_package "$dep"
