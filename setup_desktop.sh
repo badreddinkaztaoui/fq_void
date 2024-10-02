@@ -2,7 +2,7 @@
 
 setup_xinitrc() {
 
-  if [[ ! -f ~/.xinitrc ]]; then
+  if [ ! -f "~/.xinitrc" ]; then
     touch ~/.xinitrc
   fi
 
@@ -23,7 +23,7 @@ setup_sxhkd() {
  
   mkdir -p ~/.config/sxhkd/
   
-  [[ ! -f ~/.config/sxhkd/sxhkdrc ]] && touch ~/.config/sxhkd/sxhkdrc
+  [ ! -f "~/.config/sxhkd/sxhkdrc" ] && touch ~/.config/sxhkd/sxhkdrc
 
   cat << EOF >> ~/.config/sxhkd/sxhkdrc
 super + Return

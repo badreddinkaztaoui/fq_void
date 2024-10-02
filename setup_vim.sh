@@ -1,9 +1,17 @@
 #!/bin/bash
 
+set -e  # Exit immediately if a command exits with a non-zero status
+
+# Check if Vim is installed
+if ! command -v vim &> /dev/null; then
+    echo "Vim is not installed. Please install Vim and run this script again."
+    exit 1
+fi
+
 # Set up vim properties
 setup_vim_props() {
-  echo "Setting up vim props ..."
-  cat > ~/.vimrc << EOL
+    echo "Setting up vim props ..."
+    cat > ~/.vimrc << EOL
 " Props
 set     nocompatible
 set     number
@@ -50,25 +58,25 @@ EOL
 
 # Install Vundle vim
 install_vundle() {
-  echo "Installing Vundle vim ..."
-  if [ ! d ~/.vim/bundle/Vundle.vim ]; then
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-  else
-    echo "Vundle is already installed."
-  fi
+    echo "Installing Vundle vim ..."
+    if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
+        git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    else
+        echo "Vundle is already installed."
+    fi
 }
 
 # Install Plugins
 install_plugins() {
-  echo "Installing plugins ..."
-  vim +PluginInstall +qall
+    echo "Installing plugins ..."
+    vim +PluginInstall +qall
 }
 
 main() {
-  setup_vim_props
-  install_vundle
-  install_plugins
-  echo "Vim setup complete!"
+    setup_vim_props
+    install_vundle
+    install_plugins
+    echo "Vim setup complete!"
 }
 
 main
