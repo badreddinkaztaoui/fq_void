@@ -1,11 +1,16 @@
 #!/bin/bash
 
+YELLOW="\e[1;33m"
+GREEN="\e[1;32m"
+ENDC="\e[0m"
+WARN="\e[93m"
+
 setup_bash_profile() {
-  echo "Setting up .bash_profile ..."
+  echo -e $YELLOW"Setting up .bash_profile ..."$ENDC
 
   if [ -f "~/.bash_profile" ]; then
     cp ~/.bash_profile ~/.bash_profile.backup
-    echo "Existing .bash_profile backed up to ~/.bash_profile.backup"
+    echo -e $WARN"Existing .bash_profile backed up to ~/.bash_profile.backup"$ENDC
   fi
 
   cat > ~/.bash_profile << EOL
@@ -18,15 +23,15 @@ setup_bash_profile() {
  [[ $(tty) = "/dev/tty1" ]] && startx
 EOL
 
-  echo ".bash_profile setup complete!"
+  echo -e $GREEN".bash_profile setup complete!"$ENDC
 }
 
 setup_bashrc() {
-  echo "Setting up .bashrc ..."
+  echo -e $YELLOW"Setting up .bashrc ..."$ENDC
 
   if [ -f  "~/.bashrc" ]; then
       cp ~/.bashrc ~/.bashrc.backup
-      echo "Existing .bashrc backed up to ~/.bashrc.backup"
+      echo -e $WARN"Existing .bashrc backed up to ~/.bashrc.backup"$ENDC
   fi
 
   cat > ~/.bashrc << EOL
@@ -69,7 +74,7 @@ alias copy='xclip -selection clipboard'
 set -o vi
 EOL
 
-  echo ".bashrc setup complete!"
+  echo -e $GREEN".bashrc setup complete!"$ENDC
 }
 
 setup_bashrc

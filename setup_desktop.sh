@@ -1,5 +1,9 @@
 #!/bin/bash
 
+YELLOW="\e[1;33m"
+GREEN="\e[1;32m"
+ENDC="\e[0m"
+
 setup_xinitrc() {
 
   if [ ! -f "~/.xinitrc" ]; then
@@ -16,7 +20,7 @@ statusbar &
 dwm
 EOF
 
-  echo ".xinitrc setup complete!"
+  echo -e $GREEN".xinitrc setup complete!"$ENDC
 }
 
 setup_sxhkd() {
@@ -36,11 +40,11 @@ super + shift + BackSpace
 	$HOME/scripts/exit.sh
 EOF
 
-  echo "sxhkdrc setup complete!"
+  echo -e $GREEN"sxhkdrc setup complete!"$ENDC
 }
 
-echo "Configuring .xinitrc ..."
+echo -e $YELLOW"Configuring .xinitrc ..."$ENDC
 setup_xinitrc
-echo "Configuring sxhkdrc ..."
+echo -e $YELLOW"Configuring sxhkdrc ..."$ENDC
 setup_sxhkd
 

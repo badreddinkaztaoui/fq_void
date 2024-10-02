@@ -1,16 +1,22 @@
 #!/bin/bash
 
+YELLOW="\e[1;33m"
+GREEN="\e[1;32m"
+RED="\e[1;31m"
+ENDC="\e[0m"
+WARN="\e[93m"
+
 set -e  # Exit immediately if a command exits with a non-zero status
 
 # Check if Vim is installed
 if ! command -v vim &> /dev/null; then
-    echo "Vim is not installed. Please install Vim and run this script again."
+    echo -e $RED"Vim is not installed. Please install Vim and run this script again."$ENDC
     exit 1
 fi
 
 # Set up vim properties
 setup_vim_props() {
-    echo "Setting up vim props ..."
+    echo -e $YELLOW"Setting up vim props ..."$ENDC
     cat > ~/.vimrc << EOL
 " Props
 set     nocompatible
@@ -58,17 +64,17 @@ EOL
 
 # Install Vundle vim
 install_vundle() {
-    echo "Installing Vundle vim ..."
+    echo -e $YELLOW"Installing Vundle vim ..."$ENDC
     if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
         git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     else
-        echo "Vundle is already installed."
+        echo -e $WARN"Vundle is already installed."$ENDC
     fi
 }
 
 # Install Plugins
 install_plugins() {
-    echo "Installing plugins ..."
+    echo -e $YELLOW"Installing plugins ..."$ENDC
     vim +PluginInstall +qall
 }
 
@@ -76,7 +82,7 @@ main() {
     setup_vim_props
     install_vundle
     install_plugins
-    echo "Vim setup complete!"
+    echo -e $GREEN"Vim setup complete!"$ENDC
 }
 
 main
