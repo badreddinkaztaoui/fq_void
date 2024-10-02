@@ -71,6 +71,10 @@ dependencies=(
     netcat
 )
 
+for dep in "${dependencies[@]}"; do
+  install_package "$dep"
+done
+
 # Configure nginx and docker
 echo -e $YELLOW"Configuring docker ..."$ENDC
 doas ln -s /etc/sv/docker /var/service/
@@ -82,9 +86,5 @@ doas ln -s /etc/sv/nginx /var/service/
 doas sv start nginx
 
 echo -e $GREEN"docker nginx setup completed."$ENDC
-
-for dep in "${dependencies[@]}"; do
-  install_package "$dep"
-done
 
 echo -e $GREEN"Installation complete. You now have all necessary dependencies."$ENDC
