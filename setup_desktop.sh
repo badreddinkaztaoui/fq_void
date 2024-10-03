@@ -5,8 +5,6 @@ GREEN="\e[1;32m"
 RED="\e[1;31m"
 ENDC="\e[0m"
 
-# Default settings
-RESOLUTION="1920x1080"
 KEYBOARD_LAYOUT="us,ara"
 KEYBOARD_VARIANT=",digits"
 KEYBOARD_OPTION="grp:sclk_toggle caps:escape"
@@ -24,21 +22,9 @@ backup_file() {
 
 setup_xinitrc() {
     backup_file ~/.xinitrc
-    
-    if ! command_exists xrandr; then
-        echo -e "${RED}xrandr not found. Please install it and try again.${ENDC}"
-        return 1
-    fi
-
-    monitor_name=$(xrandr | grep " connected" | awk '{print $1}')
-    if [ -z "$monitor_name" ]; then
-        echo -e "${RED}Failed to detect monitor. Please check your display connection.${ENDC}"
-        return 1
-    fi
 
     cat > ~/.xinitrc << EOF
 #!/bin/sh
-xrandr --output "$monitor_name" --mode $RESOLUTION
 setxkbmap -layout $KEYBOARD_LAYOUT -variant $KEYBOARD_VARIANT -option $KEYBOARD_OPTION
 sxhkd &
 statusbar &
@@ -58,29 +44,16 @@ super + Return
 
 super + w
     $BROWSER || firefox
-
-super + shift + BackSpace
-    $HOME/scripts/exit.sh
 EOF
 
     echo -e "${GREEN}sxhkdrc setup complete!${ENDC}"
 }
 
-for prog in xrandr setxkbmap sxhkd dwm; do
+for prog in setxkbmap sxhkd dwm; do
     if ! command_exists $prog; then
         echo -e "${RED}$prog is not installed. Please install it and try again.${ENDC}"
         exit 1
     fi
-done
-
-while getopts ":r:k:v:o:" opt; do
-    case $opt in
-        r) RESOLUTION="$OPTARG" ;;
-        k) KEYBOARD_LAYOUT="$OPTARG" ;;
-        v) KEYBOARD_VARIANT="$OPTARG" ;;
-        o) KEYBOARD_OPTION="$OPTARG" ;;
-        \?) echo "Invalid option -$OPTARG" >&2; exit 1 ;;
-    esac
 done
 
 echo -e "${YELLOW}Configuring .xinitrc ...${ENDC}"

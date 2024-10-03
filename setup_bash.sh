@@ -70,7 +70,6 @@ alias restart='doas sv restart'
 
 # Applications aliases
 alias vi='vim'
-alias copy='xclip -selection clipboard'
 
 set -o vi
 EOL

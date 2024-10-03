@@ -13,9 +13,9 @@ command_exists() {
 install_package() {
   if ! xbps-query -l | grep -q "^ii $1-"; then
     if command_exists doas; then
-      doas xbps-install -y "$1" >/dev/null 2>&1
+      doas xbps-install -Sy "$1" >/dev/null 2>&1
     else
-      sudo xbps-install -y "$1" >/dev/null 2>&1
+      sudo xbps-install -Sy "$1" >/dev/null 2>&1
     fi
   else
     echo -e $WARN"$1 is already installed."$ENDC

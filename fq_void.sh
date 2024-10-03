@@ -6,10 +6,10 @@ ENDC="\e[0m"
 
 echo -e $YELLOW"Welcome to frequency world 🔥❤️"$ENDC
 
-./setup_bash.sh
 ./install_base_packages.sh
 ./setup_suckless_tools.sh
 ./setup_desktop.sh
+./setup_bash.sh
 ./setup_vim.sh
 
 echo -e $MAGENTA"Cleanup ..."$ENDC
