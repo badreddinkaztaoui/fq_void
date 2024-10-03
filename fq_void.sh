@@ -12,8 +12,8 @@ echo -e $YELLOW"Welcome to frequency world 🔥❤️"$ENDC
 ./setup_bash.sh
 ./setup_vim.sh
 
-echo -e $MAGENTA"Cleanup ..."$ENDC
-mv ./src /home/$USER/
+echo -e $MAGENTA"Setup Environment ..."$ENDC
+mv ./src $HOME/
 
 # Reboot the system
 echo -e $MAGENTA"Rebooting the system ..."$ENDC

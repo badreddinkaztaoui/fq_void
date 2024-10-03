@@ -40,10 +40,9 @@ setup_sxhkd() {
     
     cat > ~/.config/sxhkd/sxhkdrc << EOF
 super + Return
-    $TERMINAL || st
-
+    st
 super + w
-    $BROWSER || firefox
+    firefox
 EOF
 
     echo -e "${GREEN}sxhkdrc setup complete!${ENDC}"

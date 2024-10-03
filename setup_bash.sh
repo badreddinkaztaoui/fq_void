@@ -23,7 +23,6 @@ setup_bash_profile() {
  [[ $(tty) = "/dev/tty1" ]] && startx
 EOL
 
-  source ~/.bash_profile
   echo -e $GREEN".bash_profile setup complete!"$ENDC
 }
 
@@ -74,7 +73,6 @@ alias vi='vim'
 set -o vi
 EOL
 
-  source ~/.bashrc
   echo -e $GREEN".bashrc setup complete!"$ENDC
 }
 
