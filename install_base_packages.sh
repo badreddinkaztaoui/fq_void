@@ -60,6 +60,7 @@ dependencies=(
     xorg-server
     xinit
     xauth
+    xorg-input-drivers
     font-firacode
     pkg-config
     setxkbmap
