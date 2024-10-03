@@ -6,8 +6,6 @@ RED="\e[1;31m"
 ENDC="\e[0m"
 WARN="\e[93m"
 
-set -e  # Exit immediately if a command exits with a non-zero status
-
 # Check if Vim is installed
 if ! command -v vim &> /dev/null; then
     echo -e $RED"Vim is not installed. Please install Vim and run this script again."$ENDC

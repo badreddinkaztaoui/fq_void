@@ -77,7 +77,7 @@ EOL
   echo -e $GREEN".bashrc setup complete!"$ENDC
 }
 
-setup_bashrc
 setup_bash_profile
+setup_bashrc
 
 source ~/.bashrc
