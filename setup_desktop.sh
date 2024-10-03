@@ -42,7 +42,7 @@ xrandr --output "$monitor_name" --mode $RESOLUTION
 setxkbmap -layout $KEYBOARD_LAYOUT -variant $KEYBOARD_VARIANT -option $KEYBOARD_OPTION
 sxhkd &
 statusbar &
-exec dwm
+dwm
 EOF
 
     echo -e "${GREEN}.xinitrc setup complete!${ENDC}"

@@ -51,21 +51,19 @@ fi
 echo -e $YELLOW"Installing dependencies ..."$ENDC
 
 dependencies=(
-    base-devel
+    vim
+    make
+    gcc
     libX11-devel
     libXft-devel
     libXinerama-devel
-    fontconfig-devel
-    git
-    make
-    gcc
+    xorg-server
+    xinit
+    xauth
+    font-firacode
     pkg-config
-    xorg
     setxkbmap
     sxhkd
-    xinit
-    vim
-    nerd-fonts-ttf
     docker
     nginx
     netcat

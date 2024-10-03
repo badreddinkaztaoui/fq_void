@@ -23,6 +23,7 @@ setup_bash_profile() {
  [[ $(tty) = "/dev/tty1" ]] && startx
 EOL
 
+  source ~/.bash_profile
   echo -e $GREEN".bash_profile setup complete!"$ENDC
 }
 
@@ -39,7 +40,7 @@ setup_bashrc() {
 
 # If not running interactively, don't do anything
 
-# [[ "$-" != *i* ]] && return
+[[ $- != *i* ]] && return
 
 PS1="\[\033[1;34m\] ~ \[\033[0m\]\[\033[1;32m\]>\[\033[0m\] "
 
@@ -74,10 +75,9 @@ alias copy='xclip -selection clipboard'
 set -o vi
 EOL
 
+  source ~/.bashrc
   echo -e $GREEN".bashrc setup complete!"$ENDC
 }
 
 setup_bash_profile
 setup_bashrc
-
-source ~/.bashrc
