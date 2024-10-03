@@ -64,6 +64,7 @@ dependencies=(
     pkg-config
     setxkbmap
     sxhkd
+    firefox
     docker
     nginx
     netcat
