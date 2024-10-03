@@ -39,7 +39,7 @@ setup_bashrc() {
 
 # If not running interactively, don't do anything
 
-[[ $- != *i* ]] && return
+# [[ $- != *i* ]] && return
 
 PS1="\[\033[1;34m\] ~ \[\033[0m\]\[\033[1;32m\]>\[\033[0m\] "
 
