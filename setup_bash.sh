@@ -39,7 +39,7 @@ setup_bashrc() {
 
 # If not running interactively, don't do anything
 
-# [[ $- != *i* ]] && return
+[[ "$-" != *i* ]] && return
 
 PS1="\[\033[1;34m\] ~ \[\033[0m\]\[\033[1;32m\]>\[\033[0m\] "
 
@@ -47,6 +47,7 @@ PS1="\[\033[1;34m\] ~ \[\033[0m\]\[\033[1;32m\]>\[\033[0m\] "
 alias ll='ls -l --color=auto'
 alias lshd='find . -maxdepth 1 -type d -name ".*"'
 alias lshf='find . -maxdepth 1 -type f -name ".*"'
+alias copy='xcopy -selection clipboard'
 
 # xbps aliases
 alias i='doas xbps-install -S'
@@ -76,5 +77,5 @@ EOL
   echo -e $GREEN".bashrc setup complete!"$ENDC
 }
 
-setup_bash_profile
 setup_bashrc
+setup_bash_profile

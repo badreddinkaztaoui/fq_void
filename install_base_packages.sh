@@ -54,21 +54,25 @@ dependencies=(
     vim
     make
     gcc
+    curl
     libX11-devel
     libXft-devel
     libXinerama-devel
     xorg-server
     xinit
     xauth
+    xrandr
     xorg-input-drivers
-    font-firacode
+    nerd-fonts-ttf
     pkg-config
+    ffmpeg
     setxkbmap
     sxhkd
     firefox
     docker
     nginx
     netcat
+    xclip
 )
 
 for dep in "${dependencies[@]}"; do

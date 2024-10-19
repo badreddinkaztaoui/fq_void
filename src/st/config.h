@@ -5,7 +5,11 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "FiraCode:pixelsize=16:antialias=true:autohint=true";
+static char *font = "JetBrainsMono Nerd Font:pixelsize=14:antialias=true:autohint=true";
+static char *font2[] = {
+    "Noto Color Emoji:pixelsize=14:antialias=true:autohint=true",
+    "Symbola:pixelsize=14:antialias=true:autohint=true",
+};
 static int borderpx = 10;
 
 /*
@@ -95,32 +99,29 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-	[0] = "#123e7c",
-	[1] = "#ff0000",
-	[2] = "#d300c4",
-	[3] = "#f57800",
-	[4] = "#123e7c",
-	[5] = "#711c91",
-	[6] = "#0abdc6",
-	[7] = "#d7d7d5",
+    /* 8 normal colors */
+    [0] = "#282c34", /* black   */
+    [1] = "#e06c75", /* red     */
+    [2] = "#98c379", /* green   */
+    [3] = "#e5c07b", /* yellow  */
+    [4] = "#61afef", /* blue    */
+    [5] = "#c678dd", /* magenta */
+    [6] = "#56b6c2", /* cyan    */
+    [7] = "#abb2bf", /* white   */
 
-	/* 8 bright colors */
-	[8] = "#1c61c2",
-	[9] = "#ff0000",
-	[10] = "#d300c4",
-	[11] = "#f57800",
-	[12] = "#00ff00",
-	[13] = "#711c91",
-	[14] = "#0abdc6",
-	[15] = "#d7d7d5",
+    /* 8 bright colors */
+    [8]  = "#545862", /* black   */
+    [9]  = "#e06c75", /* red     */
+    [10] = "#98c379", /* green   */
+    [11] = "#e5c07b", /* yellow  */
+    [12] = "#61afef", /* blue    */
+    [13] = "#c678dd", /* magenta */
+    [14] = "#56b6c2", /* cyan    */
+    [15] = "#c8ccd4", /* white   */
 
-	[255] = 0,
-
-	/* more colors can be added after 255 to use with DefaultXX */
-	[256] = "#0abdc6", // foreground
-	[257] = "#000b1e", // background
-	[258] = "#ffffff", // cursor
+    /* special colors */
+    [256] = "#282c34", /* background */
+    [257] = "#abb2bf", /* foreground */
 };
 
 
@@ -128,11 +129,10 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor
  */
-unsigned int defaultfg = 256;
-unsigned int defaultbg = 257;
-unsigned int defaultcs = 258;
-static unsigned int defaultrcs = 258;
-
+unsigned int defaultfg = 257;
+unsigned int defaultbg = 256;
+unsigned int defaultcs = 257; /* cursor */
+unsigned int defaultrcs = 257; /* reverse cursor */
 /*
  * Default shape of cursor
  * 2: Block ("█")
@@ -141,6 +141,8 @@ static unsigned int defaultrcs = 258;
  * 7: Snowman ("☃")
  */
 static unsigned int cursorshape = 4;
+/* Terminal opacity (0-255) */
+static unsigned int alpha = 230;
 
 /*
  * Default columns and rows numbers
